@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { Data } from "./data.js";
-
+import { useNavigate } from "react-router-dom";
+import Search from "./search.jsx";
+import Update from "./update.jsx";
 const Sort1 = () => {
+  const navi=useNavigate();
+
   const [order, setOrder] = useState("ASC");
   const [sortedData, setSortedData] = useState(Data);
 
@@ -19,6 +23,7 @@ const Sort1 = () => {
 
   return (
     <>
+    
       <table
         border="3"
       >
@@ -41,6 +46,16 @@ const Sort1 = () => {
           ))}
         </tbody>
       </table>
+
+      <hr></hr>
+
+      <Search />
+       
+
+      <hr></hr>
+
+      <Update />
+      <button onClick={()=>navi("/")}>Back</button>
     </>
   );
 };

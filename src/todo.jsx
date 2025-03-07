@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from "react";
 import "./todostyle.css";
-
+import { useNavigate } from "react-router-dom";
 const Todo = () => {
+    const navi=useNavigate();
     const [list, setList] = useState([]);
     const [newvalue, setNewvalue] = useState("");
 
-    // Load tasks from localStorage on initial render
     useEffect(() => {
         const tasks = JSON.parse(localStorage.getItem("todo"));
         if (tasks) {
-            setList(tasks); // Set tasks if available in localStorage
+            setList(tasks);
         }
     }, []);
 
-    // Persist the list to localStorage whenever it changes
+   
     useEffect(() => {
         if (list.length > 0) {
             localStorage.setItem("todo", JSON.stringify(list));
         } else {
-            localStorage.removeItem("todo"); // Optionally remove from storage if list is empty
+            localStorage.removeItem("todo"); 
         }
     }, [list]);
 
@@ -58,6 +58,7 @@ const Todo = () => {
                     </ul>
                 </form>
             </div>
+            <button onClick={()=>navi("/")}>Back</button>
         </>
     );
 };

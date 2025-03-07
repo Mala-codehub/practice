@@ -1,28 +1,39 @@
 import React,{useState} from "react";
-import './style.css';
-/* import Pagination from "./pagination"; */
-import { Data } from "./data";
+import { Data } from "./data.js";
+import Sort1 from "./sort.jsx";
 const Search =() =>{
-  const[order,setOrder]=useState("[]");
+  const [search,setSearch]= useState("");
   return( 
     <>
-    <div className="in"><input type='text' placeholder="Search by a name...." onChange={(e)=>setOrder(e.target.value)}></input></div>
-    <table className="tb">
-      <thead>Student Table
-      <tr><th>Id</th> 
-      <th>Name</th>
-      <th>Phone</th></tr></thead>
-      <tbody>{
-        Data.filter((item)=>{
-        return( order === "" || item.first_name.toLowerCase().includes(order.toLowerCase()));}
-      ).map((items,index)=>(<tr key={index}><td>{items.id}</td>
-      <td>{items.first_name}</td>
-          <td>{items.phone}
-          </td></tr>))}
-       
+    <input type="text"
+    
+    placeholder="search by a name..."
+    
+    onChange={(e)=>setSearch(e.target.value)}></input>
+     <table border="3"
+     >
+      <thead>TABLE OF INFO</thead>
+      <tr><th>ID</th>
+      <th>NAME</th>
+      <th>AGE</th>
+      <th>PHONE</th></tr>
+      <tbody>
+        {Data.filter((item)=>{
+          return search === "" || item.first_name.toLowerCase().includes(search.toLowerCase());
+        }).map((item,index)=>
+        <tr key={index}><td>{item.id}</td>
+        <td>{item.first_name}</td>
+        <td>{item.age}</td>
+        <td>{item.phone}</td></tr>)}
       </tbody>
-    </table>
-   {/*  <Pagination /> */}
+      <hr></hr>
+      {Data.filter((item)=>{
+      return item.age >20 && item.age<40 ;}).map((item,index)=>
+        <tr key={index}><td>{item.id}</td>
+        <td>{item.first_name}</td>
+        <td>{item.age}</td>
+        <td>{item.phone}</td></tr>)}
+     </table>
     </>
   );
 };

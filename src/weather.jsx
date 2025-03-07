@@ -7,8 +7,10 @@ import strom from "./assets/img/storm.png";
 import snow from "./assets/img/snow.png";
 import Wind from "./assets/img/icons8-wind-50.png";
 import Humin from "./assets/img/weather.png";
-
+import { useNavigate } from "react-router-dom";
 const weather=()=>{
+    const navi=useNavigate();
+  
     const[city,setCity]=useState("");
     const[temp,settemp]=useState(0);
     const[main,setmain]=useState("Sunny");
@@ -54,6 +56,7 @@ const weather=()=>{
 
     return(
         <>
+       
         <div>
             <form className="container" onSubmit={hdsearch}>
                 <div className="flex">
@@ -72,6 +75,7 @@ const weather=()=>{
                 </div>
             </form>
         </div>
+         <button onClick={()=>navi("/")}>Back</button>
         </>
     );
 };
