@@ -1,0 +1,22 @@
+.tb {
+    border: 3px solid black;  /* Optional: Adds a border to the entire table */
+                 /* Optional: makes the table take the full width of its container */
+    text-align: center;       /* Centers text inside the cells */
+    border-collapse: collapse; /* Collapses the borders to avoid double borders between table cells */
+    margin: auto;
+    width: 50%;
+  }
+  .tb th{
+    background-color: greenyellow;
+  }
+  .tb th, .tb td {
+    border: 3px solid black; 
+    padding: 8px;  
+  }
+  .in{
+    width: 10%;
+    text-align: center;
+    margin: 20px auto;
+   
+  }
+  
